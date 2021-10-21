@@ -1,5 +1,8 @@
 trigger: none
 
+resources:
+- repo: self
+
 jobs:
   - template: /eng/common/pipelines/templates/jobs/docindex.yml
 
@@ -19,7 +22,7 @@ jobs:
           command: build
           containerRegistry: $(dockerRegistryServiceConnection)
           repository: jsrefautocr
-          tags: latet
+          tags: latest
       # Sync docs repo (this can be sparse)
       - template: /eng/common/pipelines/templates/steps/sparse-checkout.yml
         parameters:
