@@ -17,7 +17,7 @@ jobs:
         displayName: Login to ACR
         inputs:
           command: login
-          containerRegistry: $(dockerRegistryServiceConnection1)
+          containerRegistry: 'azuresdkimage'
       - task: Docker@2
         displayName: Build
         inputs:
