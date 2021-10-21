@@ -10,14 +10,14 @@ jobs:
       DocRepoLocation: $(Pipeline.Workspace)/docs
       DocRepoOwner: MicrosoftDocs
       DocRepoName: azure-docs-sdk-node
-      dockerRegistryServiceConnection1: azuresdkimage
+      dockerRegistryServiceConnection1: 'Azure SDK Docs Image'
     steps:
       # Pull and build the docker image
       - task: Docker@2
         displayName: Login to ACR
         inputs:
           command: login
-          containerRegistry: 'azuresdkimage'
+          containerRegistry: '$(dockerRegistryServiceConnection1)'
       - task: Docker@2
         displayName: Build
         inputs:
