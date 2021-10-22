@@ -17,13 +17,10 @@ jobs:
       vmImage: ubuntu-20.04
     steps:
       # Pull and build the docker image
-      - task: Docker@2
-        displayName: Build
-        inputs:
-          command: build
-          containerRegistry: $(dockerRegistryServiceConnection)
-          repository: jsrefautocr
-          tags: latest
+      - pwsh: |
+          docker login azuresdkimage.azurecr.io
+        displayName: Login container registry
+        workingDirectory: $(DocRepoLocation)
       # Sync docs repo (this can be sparse)
       - template: /eng/common/pipelines/templates/steps/sparse-checkout.yml
         parameters:
