@@ -18,9 +18,8 @@ jobs:
     steps:
       # Pull and build the docker image
       - pwsh: |
-          docker login azuresdkimage.azurecr.io
+          docker login azuresdkimages.azurecr.io
         displayName: Login container registry
-        workingDirectory: $(DocRepoLocation)
       # Sync docs repo (this can be sparse)
       - template: /eng/common/pipelines/templates/steps/sparse-checkout.yml
         parameters:
